@@ -1,12 +1,11 @@
 package Selenium_Programs;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class AlertPopUpHandle {
+public class HandleFileUploadPopUp {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
@@ -15,18 +14,10 @@ public class AlertPopUpHandle {
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );
         driver.manage().window().maximize();
-        driver.navigate().to( "https://mail.rediff.com/cgi-bin/login.cgi" );
+        driver.navigate().to( "https://html.com/input-type-file/" );
         Thread.sleep( 10000 );
-        driver.findElement( By.name("proceed") ).click();
+        driver.findElement( By.xpath( "//*[@id=\'fileupload\']" )).sendKeys("C:\\Users\\mm18780\\Desktop\\Sample.txt"  );
 
-        // Handle Alert
 
-        Alert alert = driver.switchTo().alert();
-
-        System.out.println( alert.getText());
-        Thread.sleep( 1000                                                             );
-        alert.accept();     //Click on Ok button
-
-        //alert.dismiss();    // Click on cancel button
     }
 }

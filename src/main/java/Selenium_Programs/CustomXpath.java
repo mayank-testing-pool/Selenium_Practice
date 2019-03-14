@@ -1,12 +1,13 @@
 package Selenium_Programs;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class AlertPopUpHandle {
+import java.util.concurrent.TimeUnit;
+
+public class CustomXpath {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
@@ -15,18 +16,12 @@ public class AlertPopUpHandle {
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );
         driver.manage().window().maximize();
-        driver.navigate().to( "https://mail.rediff.com/cgi-bin/login.cgi" );
-        Thread.sleep( 10000 );
-        driver.findElement( By.name("proceed") ).click();
+        driver.manage().timeouts().pageLoadTimeout( 30,TimeUnit.SECONDS );
+        driver.manage().timeouts().implicitlyWait( 30,TimeUnit.SECONDS );
+        driver.navigate().to( "https://www.ebay.com" );
 
-        // Handle Alert
+        driver.findElement( By.xpath("//input[@class='gh-tb ui-autocomplete-input']") ).sendKeys( "Java" );
 
-        Alert alert = driver.switchTo().alert();
 
-        System.out.println( alert.getText());
-        Thread.sleep( 1000                                                             );
-        alert.accept();     //Click on Ok button
-
-        //alert.dismiss();    // Click on cancel button
     }
 }

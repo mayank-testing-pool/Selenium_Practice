@@ -1,12 +1,13 @@
 package Selenium_Programs;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
-public class AlertPopUpHandle {
+public class MouseMovementConcept {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
@@ -15,18 +16,14 @@ public class AlertPopUpHandle {
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );
         driver.manage().window().maximize();
-        driver.navigate().to( "https://mail.rediff.com/cgi-bin/login.cgi" );
-        Thread.sleep( 10000 );
-        driver.findElement( By.name("proceed") ).click();
+        driver.navigate().to( "https://www.spicejet.com/" );
+        Thread.sleep( 3000 );
 
-        // Handle Alert
+        Actions action = new Actions(driver);
+        action.moveToElement( driver.findElement( By.xpath("//*[@id=\'highlight-addons\']") ) ).build().perform();
+        Thread.sleep( 3000 );
+        driver.findElement( By.linkText( "Priority Check-in" ) ).click();
 
-        Alert alert = driver.switchTo().alert();
 
-        System.out.println( alert.getText());
-        Thread.sleep( 1000                                                             );
-        alert.accept();     //Click on Ok button
-
-        //alert.dismiss();    // Click on cancel button
     }
 }

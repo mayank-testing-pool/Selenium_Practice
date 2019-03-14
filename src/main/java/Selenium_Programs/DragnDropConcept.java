@@ -1,12 +1,12 @@
 package Selenium_Programs;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
-public class AlertPopUpHandle {
+public class DragnDropConcept {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
@@ -15,18 +15,17 @@ public class AlertPopUpHandle {
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );
         driver.manage().window().maximize();
-        driver.navigate().to( "https://mail.rediff.com/cgi-bin/login.cgi" );
-        Thread.sleep( 10000 );
-        driver.findElement( By.name("proceed") ).click();
+        driver.navigate().to( "https://jqueryui.com/droppable/" );
+        Thread.sleep( 3000 );
 
-        // Handle Alert
+        driver.switchTo().frame( 0 );
+        Thread.sleep( 3000 );
+        Actions action = new Actions( driver);
+        action.clickAndHold( driver.findElement( By.xpath("//*[@id=\'draggable\']") ) )
+                .moveToElement( driver.findElement( By.xpath( "//*[@id=\'droppable\']" ) ) )
+                .release()
+                .build()
+                .perform();
 
-        Alert alert = driver.switchTo().alert();
-
-        System.out.println( alert.getText());
-        Thread.sleep( 1000                                                             );
-        alert.accept();     //Click on Ok button
-
-        //alert.dismiss();    // Click on cancel button
     }
 }
