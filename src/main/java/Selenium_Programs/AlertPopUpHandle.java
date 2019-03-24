@@ -10,7 +10,9 @@ public class AlertPopUpHandle {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
-        System.setProperty( "webdriver.chrome.driver", "C:\\Users\\mm18780\\Desktop\\Mayank\\Automation\\Selenium_Practice\\support\\chromedriver_2.41.exe" );
+        String path = System.getProperty("user.dir");
+        System.out.println (path);
+        System.setProperty( "webdriver.chrome.driver", path+"\\support\\chromedriver_2.41.exe" );
         ChromeOptions options = new ChromeOptions();
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );
@@ -24,7 +26,7 @@ public class AlertPopUpHandle {
         Alert alert = driver.switchTo().alert();
 
         System.out.println( alert.getText());
-        Thread.sleep( 1000                                                             );
+        Thread.sleep( 1000);
         alert.accept();     //Click on Ok button
 
         //alert.dismiss();    // Click on cancel button

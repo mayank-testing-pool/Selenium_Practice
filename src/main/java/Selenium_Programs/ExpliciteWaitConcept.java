@@ -15,7 +15,9 @@ public class ExpliciteWaitConcept {
 
     public static void main (String [] args) throws InterruptedException {
         WebDriver driver;
-        System.setProperty( "webdriver.chrome.driver", "C:\\Users\\mm18780\\Desktop\\Mayank\\Automation\\Selenium_Practice\\support\\chromedriver_2.41.exe" );
+        String path = System.getProperty("user.dir");
+        System.out.println (path);
+        System.setProperty( "webdriver.chrome.driver", path+"\\support\\chromedriver_2.41.exe" );
         ChromeOptions options = new ChromeOptions();
         options.addArguments( "--no-sandbox" );
         driver = new ChromeDriver( options );

@@ -39,7 +39,9 @@ public class WebDriverBasics {
 
     //1. Launch Chrome
 
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\mm18780\\Desktop\\Mayank\\Automation\\Selenium_Practice\\support\\chromedriver_2.45.exe");
+        String path = System.getProperty("user.dir");
+        System.out.println (path);
+        System.setProperty( "webdriver.chrome.driver", path+"\\support\\chromedriver_2.41.exe" );
 
 
         ChromeOptions options = new ChromeOptions();
