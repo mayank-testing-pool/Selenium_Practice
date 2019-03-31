@@ -1,0 +1,17 @@
+How to handle dynamic Web Table in selenium
+
+Method - 1
+- Iterate row and column and get cell value
+- Using for loop
+- Get total rows and iterate table
+- Put if (string matches) then select the value
+- Lengthy method
+
+Method - 2
+- Using Column xpath
+- Using parent and preceddin sibling tags
+- No need to write for loop
+- No full iteratrion of table
+- Single line statement
+- More dynamic
+- Efficient and Fast
