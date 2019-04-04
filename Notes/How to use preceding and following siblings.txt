@@ -1,0 +1,43 @@
+How to use preceding-sibling and following-sibling in xpath to find sibling nodes
+<html>
+<ul>
+	<li>Samsung Mobiles</li>
+	<li>Apple Mobiles</li>
+	<li>Nokia Mobiles</li>
+	<li>HTC Mobiles</li>
+	<li>Sony Mobiles</li>
+	<li>Micromax Mobiles</li>
+</ul>
+</html>
+
+How to get all the preceding siblings of Apple
+
+ 	Xpath: "//ul/li[contains(text(),'Apple Mobiles')]/preceding-sibling::li"
+
+	This will give "Samsung Mobiles"
+
+How to get all the following  siblings of Apple
+	Xpath:  "//ul/li[contains(text(),'Apple Mobiles')]/following-sibling::li"
+
+	This will give all the preceding siblings ( Nokia Mobiles, HTC Mobiles, Sony Mobiles, Micromax mobiles)
+
+There is trick to use preceding-sibling and following-sibling. Place matters when you use this at beginning it will give you reverse result
+When you use preceding-sibling at beginning then it will give result  ( Nokia Mobiles, HTC Mobiles, Sony Mobiles, Micromax mobiles) instead of Samsung mobiles.
+
+	Xpath : "//li[preceding-sibling::li='Apple Mobiles']" 
+
+	This will give Samsung mobiles.
+
+when you use following-sibling at the beginning then it will give reverse result. Instead of giving all below nodes of Apple mobile this will give Samsung Mobiles.
+
+	Xpath:  "//li[following-sibling::li='Apple Mobiles']"
+
+Now the question is how to get all the nodes between Apple Mobiles and Sony Mobiles.
+
+	Xpath :  "//ul/li[preceding-sibling::li='Apple Mobiles' and following-sibling::li='Sony Mobiles']"
+	This will return Nokia Mobiles and HTC Mobiles.
+
+or
+	Xpath : "//ul/li[preceding-sibling::li[.='Apple Mobiles'] and following-sibling::li[.='Sony Mobiles']]"
+	Or You can use this in contains as well
+	Xpath: "//ul/li[preceding-sibling::li[contains(text(),'Apple Mobiles')] and following-sibling::li[contains(text(),'Sony Mobiles')]]"

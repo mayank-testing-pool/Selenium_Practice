@@ -41,15 +41,15 @@ public class WebDriverBasics {
 
         String path = System.getProperty("user.dir");
         System.out.println (path);
-        System.setProperty( "webdriver.chrome.driver", path+"\\support\\chromedriver_2.41.exe" );
+        System.setProperty( "webdriver.chrome.driver", path+"\\support\\chromedriver_2.46.exe" );
 
 
-        ChromeOptions options = new ChromeOptions();
+        /*ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);*/
 
 
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
 
         driver.manage().window().maximize();

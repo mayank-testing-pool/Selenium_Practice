@@ -32,7 +32,7 @@ public class DynamicWebTableHandle {
         driver.findElement(By.name("email")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//div[contains (text(),'Login')]")).click();
-
+        Thread.sleep(5000);
         driver.findElement(By.xpath("//span[contains(text(),'Contacts')]")).click();
 
         //*[@id="ui"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[1]/td[2]
@@ -42,7 +42,10 @@ public class DynamicWebTableHandle {
         //*[@id="ui"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[5]/td[2]
         //*[@id="ui"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[6]/td[2]
         Thread.sleep(5000);
-        String before_xpath = "//*[@id=\'ui\']/div/div[2]/div[2]/div/div[2]/table/tbody/tr[";
+
+        //Method - 1
+
+        /*String before_xpath = "//*[@id=\'ui\']/div/div[2]/div[2]/div/div[2]/table/tbody/tr[";
         String after_xpath = "]/td[2]";
 
         for (int i = 1;i<=6;i++)
@@ -60,12 +63,14 @@ public class DynamicWebTableHandle {
                 //*[@id="ui"]/div/div[2]/div[2]/div/div[2]/table/tbody/tr[3]/td[1]
                 driver.findElement(By.xpath("//*[@id=\'ui\']/div/div[2]/div[2]/div/div[2]/table/tbody/tr["+i+"]/td[1]")).click();
             }
-        }
+        }*/
 
 
         //Method - 2
 
-
+        driver.findElement(By.xpath("//td[contains(text(),'User Test')]//preceding-sibling::td")).click();
+        driver.findElement(By.xpath("//td[contains(text(),'Test Admin')]//preceding-sibling::td")).click();
+        driver.findElement(By.xpath("//td[contains(text(),'Mayank Maheshwari')]//preceding-sibling::td")).click();
 
 
     }
