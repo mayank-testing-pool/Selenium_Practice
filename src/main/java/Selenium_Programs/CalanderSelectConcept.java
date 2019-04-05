@@ -51,6 +51,7 @@ public class CalanderSelectConcept {
         // Get the xpath of Today button
         WebElement today_date = driver.findElement(By.xpath("//button//span[contains(@class,'today-button')]"));
 
+        //Get the value of calender header
         String cal_header_text = cal_header.getText();
         System.out.println(cal_header_text);
         String cal_header_array[] = cal_header_text.split(" ");
@@ -59,10 +60,24 @@ public class CalanderSelectConcept {
         System.out.println("Difference between header year and selected year "+yeardiff) ;
         int header_year = Integer.parseInt(cal_header_array[1]);
         int selected_year = Integer.parseInt(year);
-        if (selected_year < header_year)
-          {
-              for (int i = )
-          }
+        do
+        {
+            Thread.sleep(3000);
+            if (selected_year < header_year)
+            {
+                prev_month_button.click();
+            }
+            else if (selected_year > header_year)
+            {
+                next_month_button.click();
+            }
+
+
+        }
+        while (cal_header_array[1].equals(year));
+
+
+
 
 
         /*if (yeardiff !=0)
