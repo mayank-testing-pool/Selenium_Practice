@@ -66,15 +66,19 @@ public class CalanderSelectConcept {
             if (selected_year < header_year)
             {
                 prev_month_button.click();
+
             }
             else if (selected_year > header_year)
             {
                 next_month_button.click();
             }
 
-
+            System.out.println("cal_header_array" + cal_header_array[1]);
+            System.out.println("year" + year);
         }
         while (cal_header_array[1].equals(year));
+
+
 
 
 
