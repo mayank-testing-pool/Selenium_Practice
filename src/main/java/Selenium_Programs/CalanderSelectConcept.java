@@ -16,6 +16,12 @@ public class CalanderSelectConcept {
         String username = "m.mayank0211@gmail.com";
         String password = "m.m@y@nk02111986";
         String path = System.getProperty("user.dir");
+        String cal_header_text;
+        String cal_header_array[];
+        int yeardiff;
+        int header_year;
+        int selected_year;
+
         System.out.println(path);
         System.setProperty("webdriver.chrome.driver", path + "\\support\\chromedriver_2.41.exe");
         ChromeOptions options = new ChromeOptions();
@@ -38,6 +44,7 @@ public class CalanderSelectConcept {
         String day = datearray[0];
         String month = datearray[1];
         String year = datearray[2];
+        System.out.println("Day " +day+" Month "+month+" Year "+year);
 
         //Get the value of current month selected on calander
         WebElement cal_header = driver.findElement(By.xpath("//span[@class='rbc-toolbar-label']"));
@@ -50,91 +57,30 @@ public class CalanderSelectConcept {
 
         // Get the xpath of Today button
         WebElement today_date = driver.findElement(By.xpath("//button//span[contains(@class,'today-button')]"));
-
-        //Get the value of calender header
-        String cal_header_text = cal_header.getText();
-        System.out.println(cal_header_text);
-        String cal_header_array[] = cal_header_text.split(" ");
-
-        int yeardiff = Integer.parseInt(year) - Integer.parseInt(cal_header_array[1]) ;
-        System.out.println("Difference between header year and selected year "+yeardiff) ;
-        int header_year = Integer.parseInt(cal_header_array[1]);
-        int selected_year = Integer.parseInt(year);
-        do
-        {
-            Thread.sleep(3000);
-            if (selected_year < header_year)
-            {
-                prev_month_button.click();
-
-            }
-            else if (selected_year > header_year)
-            {
-                next_month_button.click();
-            }
-
-            System.out.println("cal_header_array" + cal_header_array[1]);
-            System.out.println("year" + year);
-        }
-        while (cal_header_array[1].equals(year));
-
-
-
-
-
-
-
-        /*if (yeardiff !=0)
-       {
-           if (yeardiff >0)
-           {
-               for (int i = 0;i<yeardiff;i++)
-               {
-                   next_month_button.click();
-               }
-           }
-           else if (yeardiff <0)
-           {
-               for (int i = 0; i<(yeardiff*-1); i++) {
-                   Thread.sleep(3000);
-                   prev_month_button.click();
-
-               }
-           }*/
-
-
-
-
-
-
-
-
-        /*do {
-            String cal_month = driver.findElement(By.xpath("//span[@class='rbc-toolbar-label']")).getText();
-            System.out.println(cal_month);
-            String cal_month_array[] = cal_month.split(" ");
-            if (cal_month_array[0].contains(month)) {
-                break;
-            }
-            else if (cal_month_array[1] <= year)
-            {
-                driver.findElement(By.xpath())
+        do {
+                //Get the value of calender header
+                cal_header_text = cal_header.getText();
+                System.out.println(cal_header_text);
+                cal_header_array = cal_header_text.split(" ");
+                yeardiff = Integer.parseInt(year) - Integer.parseInt(cal_header_array[1]) ;
+                System.out.println("Difference between header year and selected year "+yeardiff) ;
+                header_year = Integer.parseInt(cal_header_array[1]);
+                selected_year = Integer.parseInt(year);
+                Thread.sleep(3000);
+                    if (selected_year < header_year || !(cal_header_array[0].equals(month)))
+                    {
+                       prev_month_button.click();
+                    }
+                    else if (selected_year > header_year)
+                    {
+                        next_month_button.click();
+                    }
+                System.out.println("Current Year " + header_year);
+                System.out.println("Expected Year " + selected_year);
+                System.out.println("Current Month " + cal_header_array[0]);
+                System.out.println("Expected Month " + month);
 
         }
-
-        while
-            while (cal_month_array[0].contains(month))
-
-
-                else
-                {
-                    driver.findElement(By.xpath());
-                }
-            // Select select = new Select()
-        }*/
-
-
-
-
+        while (!(cal_header_array[1].equals(year)) || !(cal_header_array[0].equals(month)));
     }
 }
