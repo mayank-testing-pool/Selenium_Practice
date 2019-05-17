@@ -17,7 +17,7 @@ public class ReadPropFile {
         String path = System.getProperty("user.dir");
         System.out.println (path);
         Properties prop = new Properties();
-        FileInputStream ip = new FileInputStream(path +"\\src\\main\\java\\Selenium_Programs\\config.properties");
+        FileInputStream ip = new FileInputStream(path +"Files\\config.properties");
         prop.load(ip);
         System.out.println(prop.getProperty("Name"));
         System.out.println (prop.getProperty("Age"));
