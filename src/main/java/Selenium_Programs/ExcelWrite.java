@@ -53,7 +53,7 @@ public class ExcelWrite {
             for (int j = 0; j < 10; j++) {
                 //Fill Data in Row
                 Cell cell = newrow.createCell(j);
-                cell.setCellValue("This is Row No " + i+ " and col no "+j);
+                cell.setCellValue("This is Row No " + (i+1)+ " and col no "+ (j+1));
             }
         }
         //Close input stream
