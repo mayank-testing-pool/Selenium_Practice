@@ -1,0 +1,10 @@
+12:04:07,559 DEBUG devpinoyLogger<strong>{1}</strong>:30 - opening webiste
+12:04:07,566 DEBUG devpinoyLogger<strong>{1}</strong>:32 - entring weight
+12:04:28,414 DEBUG devpinoyLogger<strong>{1}</strong>:34 - selecting kilograms
+12:04:28,472 DEBUG devpinoyLogger<strong>{1}</strong>:36 - selecting height in feet
+12:04:28,520 DEBUG devpinoyLogger<strong>{1}</strong>:38 - selecting height in inchs
+12:04:28,568 DEBUG devpinoyLogger<strong>{1}</strong>:40 - Clicking on calculate
+12:04:28,626 DEBUG devpinoyLogger<strong>{1}</strong>:43 - Getting SIUnit value
+12:04:28,646 DEBUG devpinoyLogger<strong>{1}</strong>:45 - Getting USUnit value
+12:04:28,691 DEBUG devpinoyLogger<strong>{1}</strong>:47 - Getting UKUnit value
+12:04:28,707 DEBUG devpinoyLogger<strong>{1}</strong>:49 - Getting overall description
