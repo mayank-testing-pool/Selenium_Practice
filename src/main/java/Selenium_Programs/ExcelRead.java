@@ -1,10 +1,7 @@
 package Selenium_Programs;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,11 +12,16 @@ public class ExcelRead {
     public static void main (String [] args) throws IOException {
 
         String file_path = System.getProperty("user.dir")+"\\Files\\ExcelWriteRead.xlsx";
-        File file = new File (file_path);
-        FileInputStream fis = new FileInputStream(file);
+        File file = null;
+        FileInputStream fis = null;
         Workbook wb = null;
         Sheet sheet = null;
         String sheet_name = "Sheet1";
+
+        // Method -1 By Using XSSFWorkbook or HSSFWorkbook
+
+        file = new File(file_path);
+        fis = new FileInputStream( file);
         int ind = file_path.lastIndexOf(".");
         String ext = file_path.substring(ind+1);
         if (ext.contains("xlsx"))
@@ -30,6 +32,25 @@ public class ExcelRead {
         {
             wb = new HSSFWorkbook(fis);
         }
+
+        // Method - 2 By using WorkbookFactory
+
+        /*
+        file = new File(file_path);
+        fis = new FileInputStream( file);
+        */
+                     // OR
+        /*
+        fis = new FileInputStream(file_path);
+        wb = WorkbookFactory.create(fis);
+        */
+
+        /*
+        WorkbookFactory is the common interface, which works for both HSSF (.xls) and XSSF (.xlsx).
+        It was introduced in POI 3.5. If you use the common interfaces like Workbook,
+        you can have the same code transparently work with both HSSF and XSSF
+        */
+
 
         sheet = wb.getSheet(sheet_name);
         Row row = sheet.getRow(0);
