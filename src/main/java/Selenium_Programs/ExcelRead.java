@@ -38,6 +38,7 @@ public class ExcelRead {
         /*
         file = new File(file_path);
         fis = new FileInputStream( file);
+        wb = WorkbookFactory.create(fis);
         */
                      // OR
         /*
